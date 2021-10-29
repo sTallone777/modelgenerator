@@ -161,6 +161,13 @@ func getFieldComment(field Field) string {
 
 func checkFileIsExist(filename string) bool {
 	var exist = true
+
+	if _, err := os.Stat(conf.ModelPath); os.IsNotExist(err) {
+		if err := os.Mkdir(conf.ModelPath, os.ModePerm); err != nil {
+			fmt.Printf("mkdir failed![%v]\n", err)
+		}
+	}
+
 	if _, err := os.Stat(filename); os.IsNotExist(err) {
 		exist = false
 	}
