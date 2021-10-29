@@ -1,0 +1,4 @@
+config.toml
+.DS_Store
+.vscode
+go.sum
